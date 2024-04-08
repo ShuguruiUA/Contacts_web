@@ -36,7 +36,7 @@ get_refresh_token = HTTPBearer()
     "/signup",
     response_model=UserResponseSchema,
     status_code=status.HTTP_201_CREATED,
-    dependencies=[Depends(RateLimiter(times=1, minutes=5))],
+    dependencies=[Depends(RateLimiter(times=1, seconds=15))],
 )
 async def signup(
     body: UserSchema,
