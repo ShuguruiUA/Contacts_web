@@ -170,7 +170,7 @@ async def logout(
 
 
 @router.get(
-    "/confirmed_email/{token}", #dependencies=[Depends(RateLimiter(times=1, hours=24))]
+    "/confirmed_email/{token}", dependencies=[Depends(RateLimiter(times=1, hours=24))]
 )
 async def confirmed_email(token: str, db: AsyncSession = Depends(get_db)):
 
