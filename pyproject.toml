@@ -22,9 +22,24 @@ python-dotenv = "^1.0.1"
 fastapi-mail = "^1.4.1"
 fastapi-limiter = "^0.1.6"
 cloudinary = "^1.39.1"
+pytest = "^8.1.1"
 
+[tool.poetry.group.dev.dependencies]
+sphinx = "7.2.6"
+
+[tool.poetry.group.test.dependencies]
+aiosqlite = "0.18.0"
+pytest_asyncio = "0.21.0"
+httpx = "0.23.3"
+pytest-cov = "4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pytest.ini_options]
+addopts = "--doctest-modules"
+testpaths = [
+    "tests", ]
+pythonpath = "."
+filterwarnings = "ignore::DeprecationWarning"

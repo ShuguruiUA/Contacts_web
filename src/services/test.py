@@ -35,6 +35,15 @@ app = FastAPI()
 
 @app.post("/send-email")
 async def send_in_background(background_tasks: BackgroundTasks, body: EmailSchema):
+
+    """
+    The send_in_background function sends an email in the background.
+
+    :param background_tasks: BackgroundTasks: Add a task to the background tasks queue
+    :param body: EmailSchema: Get the email address of the user
+    :return: A dict with a message
+    :doc-author: Trelent
+    """
     message = MessageSchema(
         subject="Fastapi mail module",
         recipients=[body.email],
@@ -52,8 +61,3 @@ async def send_in_background(background_tasks: BackgroundTasks, body: EmailSchem
 if __name__ == '__main__':
     uvicorn.run('test:app', port=8000, reload=True)
 
-# api_key = os.environ.get('SECRET_KEY')
-# db = os.environ.get('POSTGRES_DB')
-#
-# if __name__ == "__main__":
-#     print(db)
